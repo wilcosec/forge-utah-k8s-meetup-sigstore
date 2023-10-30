@@ -1,10 +1,10 @@
 APP_DIR = my-app
 CLUSTER = demo
 CONTAINER_CMD = docker
-COSIGN_PASSWORD = ""
+COSIGN_PASSWORD = "this-is-a-test"
 IMAGE_REGISTRY = ttl.sh
-# IMAGE_NAME = blake-demo-unsigned
-IMAGE_NAME = blake-demo-signed
+IMAGE_NAME = t-demo-unsigned
+# IMAGE_NAME = t-demo-signed
 IMAGE_TAG = 1h
 KUBE_NAMESPACE = default
 
@@ -39,7 +39,7 @@ apply-cluster:
 generate-key-pair:
 	COSIGN_PASSWORD=$(COSIGN_PASSWORD) cosign generate-key-pair
 
-generate:
+generate-signature:
 	cosign generate $(IMAGE_REGISTRY)/$(IMAGE_NAME):$(IMAGE_TAG)
 
 build-app:
